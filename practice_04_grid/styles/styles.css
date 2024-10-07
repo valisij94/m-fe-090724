@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.gridContainer {
+    border: 1px solid blue;
+    display: grid;
+}
+
+.box {
+    border: 1px solid black;
+    min-height: 200px;
+}
+
+.box1 {
+    background-color: red;
+}
+
+.box2 {
+    background-color: yellow;
+}
+
+.box3 {
+    background-color: lightgreen;
+}
+
+.box4 {
+    background-color: blue;
+}
+
+.box5 {
+    background-color: aqua;
+}
+
+.box6 {
+    background-color: green;
+}
+
+.box7 {
+    background-color: lightpink;
+}
+
+.box8 {
+    background-color: violet;
+}
+
+.box9 {
+    background-color: navy;
+}
