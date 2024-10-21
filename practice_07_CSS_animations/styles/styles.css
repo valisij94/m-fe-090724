@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  padding: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+}
+
+.simpleAnimationContainer {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid gray;
+  position: relative;
+}
+
+.simpleBlock {
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.block1 {
+  background-color: red;
+}
+
+.block2 {
+  background-color: yellow;
+}
+
+.block3 {
+  background-color: green;
+}
+
+.block4 {
+  background-color: blue;
+}
+
+.modalWindow {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  background-color: white;
+}
+
+.heart {
+	width: 24px;
+	height: 24px;
+  align-self: flex-end;
+	background: red;
+	clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+}
+
+.complexAnimationContainer {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.complexAnimatedBlock {
+  border: 1px solid gray;
+  background-color: greenyellow;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.sliderContainer {
+  width: 300px;
+  height: 300px;
+  align-self: center;
+  border-radius: 10px;
+  border: 2px solid red;
+  overflow: hidden;
+}
+
+.slide {
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.slide1 {
+  background-color: red;
+}
+
+.slide2 {
+  background-color: blue;
+}
+
+.slide3 {
+  background-color: aqua;
+}
+
+.slide4 {
+  background-color: lightseagreen;
+}

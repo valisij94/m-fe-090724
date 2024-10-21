@@ -1,0 +1,61 @@
+$base-font: Helvetica, sans-serif;
+$primary-color: #0096CD;
+
+@mixin flexible {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin grid_mixin($cols) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $base-font;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: $primary-color;
+  text-align: center;
+}
+
+ul {
+  border-radius: 10px;
+  background-color: aqua;
+}
+
+.intro_block {
+  ul {
+    background-color: lightgreen;
+  }
+
+  .simple_container_block {
+    background-color: lightseagreen;
+  }
+}
+
+.simple_container_block {
+  background-color: lightsalmon;
+
+  &.attention_block {
+    background-color: #e24f4f;
+  }
+}
+
+.flex_container {
+  @include flexible();
+  background-color: yellow;
+  border-radius: 10px;
+}
+
+.grid_container {
+  @include grid_mixin(3);
+}
