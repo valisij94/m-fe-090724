@@ -28,3 +28,9 @@ const participants = [
   { name: 'Meriadok', race: 'Hobbits', age: 36, weapons: ['Sword'] },
   { name: 'Peregrin', race: 'Hobbits', age: 28, weapons: ['Sword'] },
 ];
+
+/*
+9. Отсортировать массив участников по возрастанию возраста участника.
+*/
+participants.sort( (a,b) => a.age - b.age );
+console.log(participants)
