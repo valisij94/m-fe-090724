@@ -12,6 +12,7 @@ let suricate = {
   age: 5,
   color: 'Orange',
   jump: function() {
+    console.log(this);
     console.log(this.kind + ' jumps!');
   }
 }
@@ -20,6 +21,7 @@ suricate.jump();
 
 let jumpingCopy = suricate.jump;
 jumpingCopy();
+
 ```
 
 1. Что выведет фрагмент кода:
