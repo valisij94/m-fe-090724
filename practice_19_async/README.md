@@ -54,6 +54,9 @@ const myPromise = new Promise( (resolve, reject) => {
   console.log(result);
   throw new Error('WOW!');
 })
+.finally( () => {
+  console.log('Finally!');
+})
 .catch( err => console.log('From catch ' + err) );
 console.log('Third');
 ```
