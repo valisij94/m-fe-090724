@@ -19,7 +19,9 @@ const promise1 = new Promise( resolve => {
 });
 
 console.log('Start');
-promise1.finally( () => console.log('Finally')).then( res => console.log(res));
+promise1
+  .finally( () => console.log('Finally'))
+  .then( res => console.log(res));
 console.log('Finish');
 ```
 
@@ -51,10 +53,17 @@ console.log('Second');
 
 4. Что выведет код?
 ```
-const promise1 = new Promise( resolve => { console.log('One'); resolve('Hello'); } );
-const promise2 = new Promise( resolve => { console.log('Two'); resolve('World'); } );
+const promise1 = new Promise( resolve => {
+  console.log('One');
+  resolve('Hello');
+} );
+const promise2 = new Promise( resolve => {
+  console.log('Two');
+  resolve('World');
+} );
 console.log('First');
-let result = Promise.all([promise1, promise2]).then(res => console.log(res.join(' ' )));
+let result = Promise.all([promise1, promise2])
+  .then(res => console.log(res.join(' ' )));
 console.log('Second');
 ```
 
@@ -64,7 +73,7 @@ console.log('Second');
 3. Пишем асинхронную функцию `startTraining`. Она должна принять в аргументах массив гонщиков (`racers`), пройтись по массиву, и запустить заезд для каждого гонщика. Нужно дождаться, пока все доберутся до фииниша, и вывести гонщиков в порядке прихода к финишу (например, "1 - Daniel Morales, Peugeot 308").
 4. Пишем асинхронную функцию `startRace`. Теперь нас интересует тот гонщик, который первым доберется до финиша. Нужно, чтобы функция возвращала объект с данными этого гонщика. Все остальные нас не интересуют.
 5. Пишем асинхронную функцию `getCategories`, которая запросит список категорий товаров с бэка, по адресу `https://dummyjson.com/products/categories`. Используем синтаксис async/await. Нужно чтобы функция вернула список категорий.
-6. Пишем асинхронную функцию `getProductsByCategory`. Она должна принять в аргументах наименование категории, и запросить товары по адресу `https://dummyjson.com/products/CATEGORY`. Если категория не задана - то запрашивать все продукты по адресу `https://dummyjson.com/products`. Функция также должна вернуть массив товаров.
+6. Пишем асинхронную функцию `getProductsByCategory`. Она должна принять в аргументах наименование категории, и запросить товары по адресу `https://dummyjson.com/products/category/CATEGORY`. Если категория не задана - то запрашивать все продукты по адресу `https://dummyjson.com/products`. Функция также должна вернуть массив товаров.
 7. Немного отвлечемся от промисов, и вспомним DOM. Напишем функции `showLoader`, `hideLoader` для показа и скрытия иконки загрузки. Они должны показывать и скрывать параграф с текстом `Please, wait`. Параграф можно разместить в разметке, перед контейнером товаров.
 8. Теперь объединяем все вместе. У нас есть функции `renderCategories`, `renderProducts` для отрисовки списка категорий и списка товаров. Также есть функции `showLoader`, `hideLoader` для показа и скрытия иконки загрузки. Нужно на момент загрузки скрипта, запросить категории и товары. Перед этим - показать иконку загрузки. Когда выполнятся оба запроса - убрать иконку. Если кто-то из запросов свалится с ошибкой - воспользуемся функцией `showError`, чтобы показать текст ошибки.
 9. Делаем форму добавления товаров. Саму форму добавим в разметке. Форма должна содержать текстовое поле для названия, выпадающий список для категории, текстовое поле для цены, и текстовое поле для описания. При отправке формы, нужно отправлять запрос на бэк. Описание [здесь](https://dummyjson.com/docs/products#products-add). Рекомендуется использовать синтаксис `async/await`.
