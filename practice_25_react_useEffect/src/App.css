@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.productList {
+  display: grid;
+  padding: 5px 10px;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.productCard {
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px gray;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCardPrice {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+  color: green;
+}
