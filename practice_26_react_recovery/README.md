@@ -16,7 +16,7 @@
 ```
 export default function Counter() {
 
-  const [counter, setCounter] = useState(0);
+  let [counter, setCounter] = useState(0);
 
   const handleClick = () => {
     counter = counter + 1;
@@ -24,7 +24,7 @@ export default function Counter() {
   return (
     <div>
       <p>{counter}</p>
-      <button onClick='handleClick'>Clickk me!</button>
+      <button onClick={handleClick}>Clickk me!</button>
     </div>
   );
 }
@@ -44,7 +44,7 @@ export default function Counter() {
   return (
     <div>
       <p>{counter}</p>
-      <button onClick='handleClick'>Clickk me!</button>
+      <button onClick={handleClick}>Clickk me!</button>
     </div>
   );
 }
@@ -58,7 +58,7 @@ export default function SimpleComponent() {
 
   useEffect( () => {
     setData( {name: 'Timon', lastname: 'Timonov'} );
-  });
+  }, []);
 
   return (
     <div>
