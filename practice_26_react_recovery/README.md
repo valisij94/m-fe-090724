@@ -58,7 +58,7 @@ export default function SimpleComponent() {
 
   useEffect( () => {
     setData( {name: 'Timon', lastname: 'Timonov'} );
-  }, []);
+  });
 
   return (
     <div>
