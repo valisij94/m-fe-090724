@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import './App.css';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,20 +9,29 @@ import AddProductPage from './pages/AddProductPage';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
-import { decrementAction, incrementAction } from './store/actions/counterActions';
+
+import { increment, decrement, incrementByAmount } from './store/slices/counterSlice';
 
 function App() {
 
   const { toggleTheme } = useContext(ThemeContext);
   const dispatch = useDispatch();
 
-  const counter = useSelector( state => state.counter);
+  const counter = useSelector( state => state.counter.value);
 
   const incrementClickHandler = () => {
-    dispatch( incrementAction() );
+    dispatch( increment() );
   }
   const decrementClickHandler = () => {
-    dispatch( decrementAction() );
+    dispatch( decrement() );
+  }
+  const incByAmount = () => {
+    dispatch( incrementByAmount(+inputValue) );
+  }
+
+  const [inputValue, setInputValue] = useState('');
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
   }
 
   return (
@@ -45,8 +54,10 @@ function App() {
         </Routes>
 
         <p>Now counter is: {counter}</p>
+        <input type='text' value={inputValue} onChange={handleInputChange}/>
         <button onClick={incrementClickHandler}>Increment</button>
         <button onClick={decrementClickHandler}>Decrement</button>
+        <button onClick={incByAmount}>Inc by amount</button>
       </div>
     </BrowserRouter>
   );
