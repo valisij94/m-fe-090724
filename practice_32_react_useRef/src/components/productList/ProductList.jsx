@@ -3,6 +3,7 @@ import ProductCard from "../productCard/ProductCard";
 import { ThemeContext } from "../../context/themeContext/ThemeContext";
 import { useSelector, useDispatch } from 'react-redux';
 import { errorFetching, finishFetching, startFetching } from "../../store/slices/productsSlice";
+import { useRef } from "react";
 
 export default function ProductList( {selectedCategory} ) {
 
@@ -35,11 +36,26 @@ export default function ProductList( {selectedCategory} ) {
     requestProducts();
   }, [selectedCategory]);
 
+  const [idx, setIdx] = useState('');
+  const containerRef = useRef(null);
+  const handleScrollBtnClick = () => {
+    const elem = containerRef.current.querySelector(`div:nth-child(${idx})`)
+    if (elem) {
+      elem.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+  }
+
   return (
     <div className={`productListContainer ${theme}`}>
       <h2>Products in the shop</h2>
       <button onClick={toggleTheme}>Toggle Theme from ProductList</button>
-      <div className="productList">
+      <input value={idx} onChange={(e) => {setIdx(e.target.value)}} />
+      <button onClick={handleScrollBtnClick}>Scroll to product</button>
+      <div className="productList" ref={containerRef}>
         { products.map( el => <ProductCard key={el.id} product={el}/> )}
       </div>
     </div>

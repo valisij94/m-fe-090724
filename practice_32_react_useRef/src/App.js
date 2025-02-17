@@ -9,8 +9,8 @@ import AddProductPage from './pages/AddProductPage';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
-
-import { increment, decrement, incrementByAmount } from './store/slices/counterSlice';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 function App() {
 
@@ -18,6 +18,38 @@ function App() {
 
   const [firstInput, setFirstInput] = useState('');
   const [secondInput, setSecondInput] = useState('');
+
+  const firstInputRef = useRef(null);
+  const secondInputRef = useRef(null);
+  const containerRef = useRef(null);
+  const counterRef = useRef(0);
+
+  useEffect( () => {
+    if (secondInputRef.current) {
+      secondInputRef.current.focus();
+    }
+    if (containerRef.current) {
+      console.log(`Container has ${containerRef.current.offsetWidth}px width, ${containerRef.current.offsetHeight}px height`);
+    }
+  }, []);
+
+  const handleBtnFirstClick = () => {
+    if (firstInputRef.current && secondInputRef.current)
+      console.log(firstInputRef.current.value, secondInputRef.current.value)
+  }
+
+  const counterClickHandler = () => {
+    counterRef.current += 1;
+    console.log('Counter is', counterRef.current);
+  }
+
+  const handleChangeColor = () => {
+    const colors = ['red', 'green', 'blue'];
+    const currentBGColor = containerRef.current.style.backgroundColor;
+    const currentIndex = colors.indexOf(currentBGColor);
+    const nextIndex = currentIndex === colors.length - 1 ? 0 : currentIndex + 1;
+    containerRef.current.style.backgroundColor = colors[nextIndex];
+  }
 
   return (
     <BrowserRouter>
@@ -39,9 +71,12 @@ function App() {
         </Routes>
 
         <h2>Some dummy inputs for checking refs</h2>
-        <div style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
-          <input type='text' value={firstInput} name='firstInput' onChange={ (e) => setFirstInput(e.target.value) }/>
-          <input type='text' value={secondInput} name='secondInput' onChange={ (e) => setSecondInput(e.target.value) }/>
+        <div ref={containerRef} style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
+          <input ref={firstInputRef} type='text' value={firstInput} name='firstInput' onChange={ (e) => setFirstInput(e.target.value) }/>
+          <input ref={secondInputRef} type='text' value={secondInput} name='secondInput' onChange={ (e) => setSecondInput(e.target.value) }/>
+          <button onClick={handleBtnFirstClick}>Click me</button>
+          <button onClick={counterClickHandler}>Click me counter</button>
+          <button onClick={handleChangeColor}>Change color</button>
         </div>
       </div>
     </BrowserRouter>

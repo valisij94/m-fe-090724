@@ -50,19 +50,6 @@ const myPromise = new Promise( (resolve, reject) => {
 console.log('Third');
 ```
 
-4. Что выведет код?
-```
-console.log('First');
-const myPromiseVariable = new Promise( (resolve, reject) => {
-  resolve('Result');
-})
-.catch( err => console.log(err))
-.then( result => {
-  return result;
-});
-console.log('Third');
-```
-
 ### Задачи занятия
 1. В компоненте `App`, есть два инпута. Сделайте так, чтобы при монтировании компонента, фокус устанавливался бы на второй инпут.
 2. Еще работа с DOM. В компоненте `App`, добавьте реф на контейнер инпутов. При первом рендере компонента, выводите в консоль его фактические размеры (offsetWidth, offsetHeight)
