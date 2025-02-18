@@ -11,11 +11,11 @@ export default function CallbackPage() {
     setAttempts( old => ([...old, { key: stringifiedDate, value: input }]));
   }
 
-  const heavyCalculation = useMemo(() => {
+  const heavyCalculation = () => {
     console.log('Called HEAVY FUNCTION');
     // Do some heavy calculations...
     return 1;
-  }, []);
+  };
 
   return (
     <div>
