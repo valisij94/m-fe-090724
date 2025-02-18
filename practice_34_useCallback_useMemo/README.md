@@ -54,6 +54,30 @@ function SimpleList() {
 }
 ```
 
+3. Дан компонент. Будет ли он работать корректно? Нужно ли что-нибудь изменить?
+```
+function SimpleContainer() {
+  const containerRef = useRef(null);
+
+  useEffect( () => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 700) {
+        containerRef.style.width = '50%';
+      } else {
+        containerRef.style.width = '75%';
+      }
+    });
+  });
+
+  return (
+    <div ref={containerRef}>
+      <img src='some_src' alt='Image'/>
+      <p>Simple Image</p>
+    </div>
+  )
+}
+```
+
 ### Задачи занятия
 
 1. У нас есть компонент `CallbackPage`. На нем есть инпут, в котором мы вводим данные, есть кнопка, и есть список "попыток". Каждый раз при вводе чего-то в инпут, компонент списка попыток перерисовывается. Исправьте это.
