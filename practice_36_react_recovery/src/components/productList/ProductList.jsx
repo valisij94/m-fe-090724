@@ -6,6 +6,10 @@ import { startFetching, finishFetching, errorFetching } from "../../store/slices
 export default function ProductList() {
 
   const products = useSelector( state => state.products.products);
+
+  const cart = useSelector( state => state.cart);
+  console.log('Now cart is: ', cart);
+
   const dispatch = useDispatch();
 
   useEffect( () => {
